@@ -17,7 +17,7 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 - [x] Instalar Zod
 - [x] Instalar Express express-rate-limit
 - [x] Configurar arquivo .env
-- [ ] Configurar conexão com banco de dados
+- [x] Configurar conexão com banco de dados
 
 ---
 
@@ -25,17 +25,17 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ## Model User
 
-- [ ] Criar model User
+- [x] Criar model User
 - [ ] Criar relacionamento User → Order
 - [ ] Sincronizar tabela no banco
 
 ### Campos
 
-- [ ] id
-- [ ] nome
-- [ ] email
-- [ ] password
-- [ ] role
+- [x] id
+- [x] nome
+- [x] email
+- [x] password
+- [x] role
 
 ---
 
