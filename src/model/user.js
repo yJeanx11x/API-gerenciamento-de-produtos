@@ -25,7 +25,7 @@ const User = db.sequelize.define('User', {
 })
 
 try {
-    User.sync({ force: true })
+    User.sync({ force: false })
     console.log('Criando Tabela com sucesso')
 } catch (error) {
     console.log('erro na criação de tabela', error)

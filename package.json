@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "node --watch src/model/user.js"
+    "dev": "node --watch src/app/server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +16,13 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.2",
     "jsonwebtoken": "^9.0.3",
+    "mysql": "^2.18.1",
     "mysql2": "^3.22.5",
     "sequelize": "^6.37.8",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^26.0.0"
   }
 }
