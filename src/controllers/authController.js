@@ -3,12 +3,12 @@ const bcrypt = require('bcrypt')
 const validacao = require('../schema/userSchema')
 const { xid } = require('zod')
 
-
+// controller para registrar um novo usuário
 async function registe(req, res, next) {
     const { nome, email, password } = req.body
     const z = validacao.safeParse(req.body)
     try {
-        const hash =await bcrypt.hash(password, 12)
+        const hash =await bcrypt.hash(z.data.password, 12)
         await User.create(
             {
                 nome: z.data.nome,
@@ -16,14 +16,12 @@ async function registe(req, res, next) {
                 password: hash
             }
         )
-        if (email) {
-            return res.status(401).json({ message: 'Email já cadastrado!' })
-        }
-
         return res.status(201).json({ message: 'Usuário cadastrado com sucesso.' })
     } catch (error) {
         next(error)
     }
 
 }
+
+
 module.exports = { registe }
