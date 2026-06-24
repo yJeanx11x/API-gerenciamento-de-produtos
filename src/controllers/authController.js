@@ -22,7 +22,7 @@ async function registe(req, res, next) {
     }
 
 }
-
+// controller para login de usuário
 async function login(req, res, next) {
     const { email, password } = req.body
     try {

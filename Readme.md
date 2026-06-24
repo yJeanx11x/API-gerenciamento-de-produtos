@@ -43,16 +43,16 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ### Cadastro
 
-- [ ] Criar schema de validação
-- [ ] Validar dados
-- [ ] Criptografar senha
-- [ ] Criar usuário
+- [x] Criar schema de validação
+- [x] Validar dados
+- [x] Criptografar senha
+- [x] Criar usuário
 
 ### Login
 
-- [ ] Validar email
-- [ ] Validar senha
-- [ ] Comparar senha com bcrypt
+- [x] Validar email
+- [x] Validar senha
+- [x] Comparar senha com bcrypt
 - [ ] Gerar token JWT
 - [ ] Retornar token
 
