@@ -53,8 +53,8 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 - [x] Validar email
 - [x] Validar senha
 - [x] Comparar senha com bcrypt
-- [ ] Gerar token JWT
-- [ ] Retornar token
+- [x] Gerar token JWT
+- [x] Retornar token
 
 ### Middleware JWT
 

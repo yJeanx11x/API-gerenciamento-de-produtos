@@ -43,6 +43,8 @@ async function login(req, res, next) {
         }, secret,{
             expiresIn: '1h'
         })
+        user.token=token
+        await user.save()
 
 
         return res.status(201).json(token)
@@ -52,4 +54,6 @@ async function login(req, res, next) {
     }
 
 }
+
+
 module.exports = { registe, login }
