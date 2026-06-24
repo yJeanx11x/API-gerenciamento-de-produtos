@@ -1,7 +1,8 @@
+require('dotenv').config()
 const { User } = require('../model/user')
 const bcrypt = require('bcrypt')
 const validacao = require('../schema/userSchema')
-
+const jwt = require('jsonwebtoken')
 
 // controller para registrar um novo usuário
 async function registe(req, res, next) {
@@ -35,7 +36,16 @@ async function login(req, res, next) {
             return res.status(401).json({ message: 'senha inválida' })
 
         }
-        return res.status(201).json({ message: 'Login com sucesso!' })
+        const secret = process.env.SECRET
+        const token = await jwt.sign({
+            id: user.id,
+            role:user.role
+        }, secret,{
+            expiresIn: '1h'
+        })
+
+
+        return res.status(201).json(token)
 
     } catch (error) {
         next(error)
