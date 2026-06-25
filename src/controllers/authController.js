@@ -37,17 +37,19 @@ async function login(req, res, next) {
 
         }
         const secret = process.env.SECRET
-        const token = await jwt.sign({
-            id: user.id,
-            role:user.role
-        }, secret,{
-            expiresIn: '1h'
-        })
-        user.token=token
+        const token = jwt.sign({
+    id: user.id,
+    role: user.role
+}, secret, {
+    expiresIn: '1h'
+})
+        
+        user.token = token
+
         await user.save()
 
 
-        return res.status(201).json(token)
+        return res.status(200).json(token)
 
     } catch (error) {
         next(error)
@@ -55,5 +57,11 @@ async function login(req, res, next) {
 
 }
 
+async function logout(req, res, next) {
 
-module.exports = { registe, login }
+        return res.status(200).json({
+            message: 'Logout realizado com sucesso.'
+        })
+
+}
+module.exports = { registe, login, logout }

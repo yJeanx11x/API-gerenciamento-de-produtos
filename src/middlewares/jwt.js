@@ -1,17 +1,18 @@
 require('dotenv').config()
+const { where } = require('sequelize');
 const { User } = require('../model/user');
-const jtw = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
-async function verificartoken(req, res, next) {
-    const autheader = req.autheaders['authorization']
-    const token = autheader && autheader.split(' ')[1]
+async function verificarToken(req, res, next) {
+    const athHeader = req.headers['authorization']
+    const token = athHeader && athHeader.split(' ')[1]
     if (!token) {
-        return res.status(401).json({ message: 'Acesso negado' })
+        return res.status(401).json({ message: 'Acesso negado!' })
     }
     try {
         const secret = process.env.SECRET
-        const decoded = jwt.verificartoken(token, secret)
-        const user = await User.findByPk(decoded.id)
+        const decoded = jwt.verify(token, secret)
+        const user = await User.findOne({ where: decoded.id })
 
         if (!user) {
             return res.status(401).json({ message: 'Usuário não encontrado!' })
@@ -22,6 +23,11 @@ async function verificartoken(req, res, next) {
         req.user = user
         next()
     } catch (error) {
-        return res.status(500).json({ message: 'Token invalido!' })
+        return res.status(401).json({ message: 'Token invalido!' })
     }
 }
+
+module.exports = {
+    verificarToken
+}
+

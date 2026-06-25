@@ -58,10 +58,10 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ### Middleware JWT
 
-- [ ] Criar middleware JWT
-- [ ] Verificar token
-- [ ] Salvar usuário em req.user
-- [ ] Proteger rotas
+- [x] Criar middleware JWT
+- [x] Verificar token
+- [x] Salvar usuário em req.user
+- [] Proteger rotas
 
 ---
 
