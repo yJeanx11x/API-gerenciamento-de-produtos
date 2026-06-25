@@ -1,4 +1,6 @@
 const db = require('../config/database')
+const {Product}  = require('../model/product')
+
 const User = db.sequelize.define('User', {
     nome: {
         type: db.Sequelize.STRING,
@@ -24,10 +26,14 @@ const User = db.sequelize.define('User', {
 
 })
 
+async function dataBase(){
 try {
-    User.sync({ force: false })
-    console.log('Criando Tabela com sucesso')
+   await User.sync({ force: false })
+   await Product.sync({ force: false })
+    console.log('Tabelas criadas com sucesso')
 } catch (error) {
     console.log('erro na criação de tabela', error)
 }
+}
+dataBase()
 module.exports = { User }
