@@ -1,10 +1,13 @@
-const express=require('express');
-const appRoute=express.Router()
-const authcontroll=require('../controllers/authController')
-const jsonwt=require('../middlewares/jwt') 
+const express = require('express');
+const appRoute = express.Router()
+const authcontroll = require('../controllers/authController')
+const jwt = require('../middlewares/jwt')
 
-appRoute.post('/register',authcontroll.registe)
-appRoute.post('/login',authcontroll.login)
+const produtos = require('../controllers/productController');
 
-appRoute.get('/teste',jsonwt.verificarToken,authcontroll.logout)
-module.exports=appRoute
+appRoute.post('/register', authcontroll.registe)
+appRoute.post('/login', authcontroll.login)
+
+appRoute.get('/produto', jwt.verificarToken, produtos.produto)
+appRoute.post('/produto',jwt.verificarToken,produtos.criarProduto)
+module.exports = appRoute
