@@ -9,5 +9,5 @@ appRoute.post('/register', authcontroll.registe)
 appRoute.post('/login', authcontroll.login)
 
 appRoute.get('/produto', jwt.verificarToken, produtos.produto)
-appRoute.post('/produto',jwt.verificarToken,produtos.criarProduto)
+appRoute.post('/produto',jwt.verificarToken, produtos.criarProduto)
 module.exports = appRoute
