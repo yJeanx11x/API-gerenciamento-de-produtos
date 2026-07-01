@@ -1,4 +1,5 @@
 
+
 const { Product } = require('../model/product')
 const { User } = require('../model/user')
 
@@ -22,8 +23,8 @@ async function criarProduto(req, res, next) {
     const { nome, descricao, preco, estoque } = req.body
     try {
         if (req.user.role !== 'admin') {
-           return res.status(401).json({ message: 'Acesso negado. Somente administradores.' })
-       }
+            return res.status(401).json({ message: 'Acesso negado. Somente administradores.' })
+        }
 
         const nomeProduto = await Product.findOne({ where: { nome } })
         if (nomeProduto) {
@@ -34,7 +35,7 @@ async function criarProduto(req, res, next) {
             descricao,
             preco,
             estoque,
-            userId: req.user.id 
+            userId: req.user.id
         })
 
         return res.status(201).json({ message: 'Produto cadastrado com sucesso.' })
@@ -46,6 +47,23 @@ async function criarProduto(req, res, next) {
 
 }
 
+async function deltarProduto(req, res, next) {
+    const { id } = req.params
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(401).json({ message: 'Acesso negado. Somente administradores.' })
+        }
+        const idProduto = await Product.findOne({ where: { id } })
 
+        if (!idProduto) {
+            return res.status(401).json({ message: 'Produto não cadastrado' })
+        }
+        await idProduto.destroy()
+        return res.status(200).json({ message: 'Deletado com sucesso!', dado: idProduto })
+    } catch (error) {
+        next(error)
+    }
 
-module.exports = { produto, criarProduto }
+}
+
+module.exports = { produto, criarProduto, deltarProduto }
