@@ -2,6 +2,7 @@
 
 const { Product } = require('../model/product')
 const { User } = require('../model/user')
+const { Op } = require('sequelize');
 
 async function produto(req, res, next) {
 
@@ -46,9 +47,6 @@ async function criarProduto(req, res, next) {
 async function deltarProduto(req, res, next) {
     const { id } = req.params
     try {
-        if (req.user.role !== 'admin') {
-            return res.status(401).json({ message: 'Acesso negado. Somente administradores.' })
-        }
         const idProduto = await Product.findOne({ where: { id } })
 
         if (!idProduto) {
@@ -62,17 +60,34 @@ async function deltarProduto(req, res, next) {
 
 }
 
-async function atualizarProduto(req, res, next) {
+async function atualizarP(req, res, next) {
     const { id } = req.params
-    const { nome, descricao, preco, estoque } = req.body
 
     try {
+        const idProduto = await Product.findOne({ where: { id } })
+        if (!idProduto) {
+            return res.status(401).json({ message: 'Produto não cadastrado' })
+        }
 
+        const { nome, descricao, preco, estoque } = req.body
+        const produtoExistente = await Product.findOne({ where: { nome, id: { [Op.ne]: id } } });
 
+        if (produtoExistente) {
+            return res.status(409).json({
+                message: 'Já existe um produto com este nome.'
+            });
+        }
+        idProduto.update({
+            nome,
+            descricao,
+            preco,
+            estoque
+        })
+        return res.status(200).json({message:'Produto atualizado com sucesso.'})
 
     } catch (error) {
         next(error)
     }
 }
 
-module.exports = { produto, criarProduto, deltarProduto }
+module.exports = { produto, criarProduto, deltarProduto, atualizarP }
