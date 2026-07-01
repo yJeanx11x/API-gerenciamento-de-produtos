@@ -13,8 +13,10 @@ appRoute.post('/login', authcontroll.login)
 appRoute.get('/produto', jwt.verificarToken, produtos.produto)
 
 // função do adm criar / deletar / atualizar 
-appRoute.post('/produto', jwt.verificarToken,admin.isAdmin ,produtos.criarProduto)
+appRoute.post('/produto', jwt.verificarToken, admin.isAdmin, produtos.criarProduto)
 
 appRoute.delete('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.deltarProduto)
+
+appRoute.patch('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.atualizarP)
 
 module.exports = appRoute

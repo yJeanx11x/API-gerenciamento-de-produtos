@@ -61,7 +61,7 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 - [x] Criar middleware JWT
 - [x] Verificar token
 - [x] Salvar usuário em req.user
-- [] Proteger rotas
+- [x] Proteger rotas
 
 ---
 
@@ -69,16 +69,16 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ## Model Product
 
-- [ ] Criar model Product
-- [ ] Sincronizar tabela
+- [x] Criar model Product
+- [x] Sincronizar tabela
 
 ### Campos
 
-- [ ] id
-- [ ] nome
-- [ ] descricao
-- [ ] preco
-- [ ] estoque
+- [x] id
+- [x] nome
+- [x] descricao
+- [x] preco
+- [x] estoque
 
 ---
 
@@ -86,20 +86,20 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ### Create
 
-- [ ] Criar produto
+- [x] Criar produto
 
 ### Read
 
-- [ ] Listar produtos
+- [x] Listar produtos
 - [ ] Buscar produto por ID
 
 ### Update
 
-- [ ] Atualizar produto
+- [x] Atualizar produto
 
 ### Delete
 
-- [ ] Excluir produto
+- [x] Excluir produto
 
 ---
 
@@ -162,16 +162,16 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ## Validação
 
-- [ ] Criar schemas com Zod
-- [ ] Validar usuários
-- [ ] Validar produtos
+- [x] Criar schemas com Zod
+- [x] Validar usuários
+- [x] Validar produtos
 - [ ] Validar pedidos
 
 ## Proteção
 
-- [ ] Implementar JWT
+- [x] Implementar JWT
 - [ ] Implementar Rate Limit
-- [ ] Middleware global de erro
+- [x] Middleware global de erro
 - [ ] Variáveis de ambiente
 
 ---
@@ -180,11 +180,11 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ## Config
 
-- [ ] database.js
+- [x] database.js
 
 ## Controllers
 
-- [ ] authController.js
+- [x] authController.js
 - [ ] productController.js
 - [ ] orderController.js
 
@@ -251,3 +251,4 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 Jean Lucas de Souza Araújo
 
 Projeto desenvolvido para prática de Backend com Node.js, Express, Sequelize, MySQL e JWT.
+
