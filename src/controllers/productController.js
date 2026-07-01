@@ -22,10 +22,6 @@ async function produto(req, res, next) {
 async function criarProduto(req, res, next) {
     const { nome, descricao, preco, estoque } = req.body
     try {
-        if (req.user.role !== 'admin') {
-            return res.status(401).json({ message: 'Acesso negado. Somente administradores.' })
-        }
-
         const nomeProduto = await Product.findOne({ where: { nome } })
         if (nomeProduto) {
             return res.status(409).json({ message: 'Já existe um produto com este nome.' })
@@ -64,6 +60,19 @@ async function deltarProduto(req, res, next) {
         next(error)
     }
 
+}
+
+async function atualizarProduto(req, res, next) {
+    const { id } = req.params
+    const { nome, descricao, preco, estoque } = req.body
+
+    try {
+
+
+
+    } catch (error) {
+        next(error)
+    }
 }
 
 module.exports = { produto, criarProduto, deltarProduto }
