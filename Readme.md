@@ -107,19 +107,19 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ## Model Order
 
-- [ ] Criar model Order
-- [ ] Relacionar User → Order
-- [ ] Relacionar Product → Order
-- [ ] Sincronizar tabela
+- [x] Criar model Order
+- [x] Relacionar User → Order
+- [x] Relacionar Product → Order
+- [x] Sincronizar tabela
 
 ### Campos
 
-- [ ] id
-- [ ] quantidade
-- [ ] total
-- [ ] status
-- [ ] UsuarioId
-- [ ] ProdutoId
+- [x] id
+- [x] quantidade
+- [x] total
+- [x] status
+- [x] UsuarioId
+- [x] ProdutoId
 
 ---
 

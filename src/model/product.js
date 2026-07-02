@@ -1,9 +1,9 @@
 const db = require('../config/database')
 const Product = db.sequelize.define('Product', {
- userId: {
+    userId: {
         type: db.Sequelize.INTEGER,
         allowNull: false,
- },
+    },
     nome: {
         type: db.Sequelize.STRING,
         allowNull: false,

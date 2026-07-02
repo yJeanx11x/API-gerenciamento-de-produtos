@@ -1,7 +1,8 @@
 
-
 const { Product } = require('../model/product')
 const { User } = require('../model/user')
+
+// busca o operador de comparação do sequelize
 const { Op } = require('sequelize');
 
 async function produto(req, res, next) {
