@@ -27,11 +27,16 @@ const User = db.sequelize.define('User', {
 
 })
 User.hasMany(Product, { foreignKey: 'userId' })
+
 Product.belongsTo(User, { foreignKey: 'userId' })
 
 User.hasMany(order, { foreignKey: 'userId' })
+
 order.belongsTo(User, { foreignKey: 'userId' })
 
+Product.hasMany(order, { foreignKey: 'productId' })
+
+order.belongsTo(Product, { foreignKey: 'productId' })
 
 async function dataBase() {
     try {
