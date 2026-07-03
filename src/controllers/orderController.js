@@ -41,8 +41,8 @@ async function pedido(req, res, next) {
 async function listarPedidos(req, res, next) {
 
     try {
-       
-        const lista = await order.findAll({where: { userId: req.user.id }})
+
+        const lista = await order.findAll({ where: { userId: req.user.id } })
         if (!lista) {
             return res.status(401).json({ message: 'Nenhum Produto na sua lista' })
         }
