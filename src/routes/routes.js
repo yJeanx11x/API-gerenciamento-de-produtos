@@ -4,7 +4,7 @@ const authcontroll = require('../controllers/authController')
 const jwt = require('../middlewares/jwt')
 
 const produtos = require('../controllers/productController');
-const pedido=require('../controllers/orderController')
+const pedido = require('../controllers/orderController')
 
 const admin = require('../middlewares/isAdmin')
 
@@ -21,6 +21,7 @@ appRoute.delete('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.delt
 appRoute.patch('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.atualizarP)
 
 // Pedidos
-appRoute.get('/pedidos',jwt.verificarToken,pedido.pedido)
+appRoute.post('/pedidos', jwt.verificarToken, pedido.pedido)
+appRoute.get('/pedidos', jwt.verificarToken, pedido.listarPedidos)
 
 module.exports = appRoute
