@@ -34,9 +34,9 @@ User.hasMany(order, { foreignKey: 'userId' })
 
 order.belongsTo(User, { foreignKey: 'userId' })
 
-Product.hasMany(order, { foreignKey: 'productId' })
+Product.hasMany(order, { foreignKey: 'ProdutoId' })
 
-order.belongsTo(Product, { foreignKey: 'productId' })
+order.belongsTo(Product, { foreignKey: 'ProdutoId' })
 
 async function dataBase() {
     try {
