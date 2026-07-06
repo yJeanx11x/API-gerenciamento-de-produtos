@@ -23,5 +23,6 @@ appRoute.patch('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.atual
 // Pedidos
 appRoute.post('/pedidos', jwt.verificarToken, pedido.pedido)
 appRoute.get('/pedidos', jwt.verificarToken, pedido.listarPedidos)
+appRoute.delete('/pedidos1/:id',jwt.verificarToken,pedido.cancelarPedito)
 
 module.exports = appRoute
