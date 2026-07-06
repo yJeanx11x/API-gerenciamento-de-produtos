@@ -143,7 +143,7 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ### Delete
 
-- [ ] Cancelar pedido
+- [x] Cancelar pedido
 
 ---
 
@@ -151,10 +151,10 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 - [x] Usuário só pode ver seus próprios pedidos
 - [ ] Usuário só pode editar seus próprios pedidos
-- [ ] Usuário só pode cancelar seus próprios pedidos
-- [ ] Admin pode gerenciar produtos
-- [ ] Não permitir estoque negativo
-- [ ] Atualizar estoque automaticamente
+- [x] Usuário só pode cancelar seus próprios pedidos
+- [x] Admin pode gerenciar produtos
+- [x] Não permitir estoque negativo
+- [x] Atualizar estoque automaticamente
 
 ---
 
