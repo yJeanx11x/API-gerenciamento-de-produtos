@@ -5,6 +5,8 @@ const { order } = require('../model/order')
 
 
 
+
+
 async function pedido(req, res, next) {
     const { id, quantidade } = req.body
     try {
@@ -16,7 +18,6 @@ async function pedido(req, res, next) {
         if (produto.estoque < quantidade || quantidade == 0) {
             return res.status(400).json({ message: 'Produto Indisponivél' })
         }
-
         order.create({
             userId: req.user.id,
             ProdutoId: produto.id,
@@ -24,6 +25,7 @@ async function pedido(req, res, next) {
             total: produto.preco * quantidade,
             status: 'PENDENTE'
         })
+
         const novoEstoque = produto.estoque - quantidade
         produto.update({
             estoque: novoEstoque
@@ -52,4 +54,43 @@ async function listarPedidos(req, res, next) {
     }
 
 }
-module.exports = { pedido, listarPedidos }
+
+async function cancelarPedito(req, res, next) {
+    const { id } = req.params
+
+    try {
+
+
+        const pedido = await order.findOne({ where: { id, userId: req.user.id } })
+
+
+
+        if (!pedido) {
+            return res.status(403).json({ message: 'O produto não está no seu carrinho' })
+        }
+
+        const produto = await Product.findByPk(pedido.ProdutoId);
+
+        if (!produto) {
+            return res.status(404).json({
+                message: 'Produto não encontrado.'
+            });
+        }
+
+        const estoqueN =  Number(produto.estoque) + Number(pedido.quantidade);
+        await produto.update({
+            estoque: estoqueN
+        });
+        await pedido.destroy();
+        return res.status(200).json({
+            message: 'Pedido cancelado com sucesso.'
+        });
+        console.log("Novo estoque:", produto.estoque + pedido.quantidade);
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+
+module.exports = { pedido, listarPedidos, cancelarPedito }
