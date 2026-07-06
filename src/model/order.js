@@ -11,7 +11,6 @@ const order = db.sequelize.define('Pedidos', {
     quantidade: {
         type: db.Sequelize.STRING,
         allowNull: false,
-        unique: true,
     },
     total: {
         type: db.Sequelize.STRING,

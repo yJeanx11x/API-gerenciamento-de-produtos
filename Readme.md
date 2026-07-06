@@ -26,8 +26,8 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 ## Model User
 
 - [x] Criar model User
-- [ ] Criar relacionamento User → Order
-- [ ] Sincronizar tabela no banco
+- [x] Criar relacionamento User → Order
+- [x] Sincronizar tabela no banco
 
 ### Campos
 
@@ -127,19 +127,19 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 ### Create
 
-- [ ] Criar pedido
-- [ ] Verificar estoque disponível
-- [ ] Calcular valor total
-- [ ] Atualizar estoque
+- [x] Criar pedido
+- [x] Verificar estoque disponível
+- [x] Calcular valor total
+- [x] Atualizar estoque
 
 ### Read
 
-- [ ] Listar pedidos do usuário
+- [x] Listar pedidos do usuário
 - [ ] Buscar pedido por ID
 
 ### Update
 
-- [ ] Atualizar status do pedido
+- [x] Atualizar status do pedido
 
 ### Delete
 
@@ -149,7 +149,7 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 
 # 🔐 Regras de Negócio
 
-- [ ] Usuário só pode ver seus próprios pedidos
+- [x] Usuário só pode ver seus próprios pedidos
 - [ ] Usuário só pode editar seus próprios pedidos
 - [ ] Usuário só pode cancelar seus próprios pedidos
 - [ ] Admin pode gerenciar produtos
@@ -165,7 +165,7 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 - [x] Criar schemas com Zod
 - [x] Validar usuários
 - [x] Validar produtos
-- [ ] Validar pedidos
+- [x] Validar pedidos
 
 ## Proteção
 
@@ -185,26 +185,26 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 ## Controllers
 
 - [x] authController.js
-- [ ] productController.js
-- [ ] orderController.js
+- [x] productController.js
+- [x] orderController.js
 
 ## Models
 
-- [ ] User.js
-- [ ] Product.js
-- [ ] Order.js
+- [x] User.js
+- [x] Product.js
+- [x] Order.js
 
 ## Routes
 
-- [ ] authRoutes.js
-- [ ] productRoutes.js
-- [ ] orderRoutes.js
+- [x] authRoutes.js
+- [x] productRoutes.js
+- [x] orderRoutes.js
 
 ## Middlewares
 
-- [ ] authMiddleware.js
-- [ ] errorMiddleware.js
-- [ ] rateLimit.js
+- [x] authMiddleware.js
+- [x] errorMiddleware.js
+- [x] rateLimit.js
 
 ---
 
@@ -232,15 +232,15 @@ API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Exp
 ## Nível Atual
 
 ```text
-[░░░░░░░░░░░░░░░░░░░░] 0%
+[░░░░░░░░░░░░░░░░░░░░] 75%
 ```
 
 ## Objetivo Final
 
 - [ ] API completa
-- [ ] JWT funcionando
-- [ ] Relacionamentos Sequelize
-- [ ] Segurança implementada
+- [x] JWT funcionando
+- [x] Relacionamentos Sequelize
+- [x] Segurança implementada
 - [ ] Deploy realizado
 - [ ] Projeto pronto para portfólio
 
