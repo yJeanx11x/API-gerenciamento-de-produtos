@@ -55,6 +55,19 @@ async function listarPedidos(req, res, next) {
 
 }
 
+async function buscarProdutoId(req, res, next) {
+    const { id } = req.params
+    try {
+        const produtoId = await order.findOne({ where: { id } }, { where: { userId: req.user.id } })
+        if (!produtoId) {
+            return res.status(403).json({ message: 'Pedido não encontardo' })
+        }
+        return res.status(200).json(produtoId)
+    } catch (error) {
+        next(error)
+    }
+}
+
 async function cancelarPedito(req, res, next) {
     const { id } = req.params
 
@@ -77,7 +90,7 @@ async function cancelarPedito(req, res, next) {
             });
         }
 
-        const estoqueN =  Number(produto.estoque) + Number(pedido.quantidade);
+        const estoqueN = Number(produto.estoque) + Number(pedido.quantidade);
         await produto.update({
             estoque: estoqueN
         });
@@ -93,4 +106,4 @@ async function cancelarPedito(req, res, next) {
 }
 
 
-module.exports = { pedido, listarPedidos, cancelarPedito }
+module.exports = { pedido, listarPedidos, cancelarPedito,buscarProdutoId }
