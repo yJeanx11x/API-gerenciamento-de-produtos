@@ -9,9 +9,8 @@ const pedido = require('../controllers/orderController')
 
 const admin = require('../middlewares/isAdmin')
 
-appRoute.use(ratelimet)
-appRoute.post('/register', authcontroll.registe)
-appRoute.post('/login', authcontroll.login)
+appRoute.post('/register', ratelimet, authcontroll.registe)
+appRoute.post('/login', ratelimet, authcontroll.login)
 
 appRoute.get('/produto', jwt.verificarToken, produtos.produto)
 
@@ -23,7 +22,7 @@ appRoute.delete('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.delt
 appRoute.patch('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.atualizarP)
 
 // Pedidos
-appRoute.post('/pedidos', jwt.verificarToken, pedido.pedido)
+appRoute.post('/pedidos',ratelimet ,jwt.verificarToken, pedido.pedido)
 appRoute.get('/pedidos', jwt.verificarToken, pedido.listarPedidos)
 appRoute.delete('/pedidos/:id', jwt.verificarToken, pedido.cancelarPedito)
 appRoute.get('/pedidos/:id', jwt.verificarToken, pedido.buscarProdutoId)
