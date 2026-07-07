@@ -1,6 +1,7 @@
 
 const { Product } = require('../model/product')
 const { User } = require('../model/user')
+const validacaoProduto=require('../schema/productShema')
 
 // busca o operador de comparação do sequelize
 const { Op } = require('sequelize');
@@ -23,18 +24,24 @@ async function produto(req, res, next) {
 
 async function criarProduto(req, res, next) {
     const { nome, descricao, preco, estoque } = req.body
+    const z = validacaoProduto.safeParse(req.body)
+
     try {
         const nomeProduto = await Product.findOne({ where: { nome } })
         if (nomeProduto) {
             return res.status(409).json({ message: 'Já existe um produto com este nome.' })
         }
         await Product.create({
-            nome,
-            descricao,
-            preco,
-            estoque,
+            nome:z.data.nome,
+            descricao:z.data.descricao,
+            preco:z.data.preco,
+            estoque:z.data.estoque,
             userId: req.user.id
         })
+
+        if(z.error){
+            return res.status(403).json({message:'Erro Padrinho'})
+        }
 
         return res.status(201).json({ message: 'Produto cadastrado com sucesso.' })
 
