@@ -1,254 +1,254 @@
-# 🚀 Order Management API
+# 🛒 Orders API
 
-API REST para gerenciamento de produtos e pedidos, desenvolvida com Node.js, Express, Sequelize e MySQL.
-
----
-
-# 📋 Status do Projeto
-
-## 🏗️ Configuração Inicial
-
-- [x] Criar projeto Node.js
-- [x] Instalar Express
-- [x] Instalar Sequelize
-- [x] Instalar MySQL2
-- [x] Instalar JWT
-- [x] Instalar bcrypt
-- [x] Instalar Zod
-- [x] Instalar Express express-rate-limit
-- [x] Configurar arquivo .env
-- [x] Configurar conexão com banco de dados
+API REST desenvolvida com **Node.js**, **Express**, **Sequelize** e **MySQL** para gerenciamento de usuários, produtos e pedidos. O projeto utiliza autenticação com JWT, criptografia de senhas com Bcrypt e controle de estoque durante a criação de pedidos.
 
 ---
 
-# 👤 Usuários
+## 🚀 Tecnologias Utilizadas
 
-## Model User
-
-- [x] Criar model User
-- [x] Criar relacionamento User → Order
-- [x] Sincronizar tabela no banco
-
-### Campos
-
-- [x] id
-- [x] nome
-- [x] email
-- [x] password
-- [x] role
+- Node.js
+- Express.js
+- Sequelize ORM
+- MySQL
+- JWT (JSON Web Token)
+- Bcrypt
+- Express Rate Limit
+- Dotenv
 
 ---
 
-## Autenticação
-
-### Cadastro
-
-- [x] Criar schema de validação
-- [x] Validar dados
-- [x] Criptografar senha
-- [x] Criar usuário
-
-### Login
-
-- [x] Validar email
-- [x] Validar senha
-- [x] Comparar senha com bcrypt
-- [x] Gerar token JWT
-- [x] Retornar token
-
-### Middleware JWT
-
-- [x] Criar middleware JWT
-- [x] Verificar token
-- [x] Salvar usuário em req.user
-- [x] Proteger rotas
-
----
-
-# 📦 Produtos
-
-## Model Product
-
-- [x] Criar model Product
-- [x] Sincronizar tabela
-
-### Campos
-
-- [x] id
-- [x] nome
-- [x] descricao
-- [x] preco
-- [x] estoque
-
----
-
-## CRUD Produtos
-
-### Create
-
-- [x] Criar produto
-
-### Read
-
-- [x] Listar produtos
-- [ ] Buscar produto por ID
-
-### Update
-
-- [x] Atualizar produto
-
-### Delete
-
-- [x] Excluir produto
-
----
-
-# 🛒 Pedidos
-
-## Model Order
-
-- [x] Criar model Order
-- [x] Relacionar User → Order
-- [x] Relacionar Product → Order
-- [x] Sincronizar tabela
-
-### Campos
-
-- [x] id
-- [x] quantidade
-- [x] total
-- [x] status
-- [x] UsuarioId
-- [x] ProdutoId
-
----
-
-## CRUD Pedidos
-
-### Create
-
-- [x] Criar pedido
-- [x] Verificar estoque disponível
-- [x] Calcular valor total
-- [x] Atualizar estoque
-
-### Read
-
-- [x] Listar pedidos do usuário
-- [ ] Buscar pedido por ID
-
-### Update
-
-- [x] Atualizar status do pedido
-
-### Delete
-
-- [x] Cancelar pedido
-
----
-
-# 🔐 Regras de Negócio
-
-- [x] Usuário só pode ver seus próprios pedidos
-- [ ] Usuário só pode editar seus próprios pedidos
-- [x] Usuário só pode cancelar seus próprios pedidos
-- [x] Admin pode gerenciar produtos
-- [x] Não permitir estoque negativo
-- [x] Atualizar estoque automaticamente
-
----
-
-# 🛡️ Segurança
-
-## Validação
-
-- [x] Criar schemas com Zod
-- [x] Validar usuários
-- [x] Validar produtos
-- [x] Validar pedidos
-
-## Proteção
-
-- [x] Implementar JWT
-- [ ] Implementar Rate Limit
-- [x] Middleware global de erro
-- [ ] Variáveis de ambiente
-
----
-
-# 📂 Arquitetura MVC
-
-## Config
-
-- [x] database.js
-
-## Controllers
-
-- [x] authController.js
-- [x] productController.js
-- [x] orderController.js
-
-## Models
-
-- [x] User.js
-- [x] Product.js
-- [x] Order.js
-
-## Routes
-
-- [x] authRoutes.js
-- [x] productRoutes.js
-- [x] orderRoutes.js
-
-## Middlewares
-
-- [x] authMiddleware.js
-- [x] errorMiddleware.js
-- [x] rateLimit.js
-
----
-
-# 🧪 Testes (Opcional)
-
-- [ ] Instalar Jest
-- [ ] Testar autenticação
-- [ ] Testar produtos
-- [ ] Testar pedidos
-
----
-
-# 🚀 Deploy
-
-- [ ] Configurar GitHub
-- [ ] Criar README
-- [ ] Fazer deploy no Render
-- [ ] Configurar banco online
-- [ ] Testar API em produção
-
----
-
-# 📊 Progresso
-
-## Nível Atual
-
-```text
-[░░░░░░░░░░░░░░░░░░░░] 75%
+## 📂 Estrutura do Projeto
+
+```
+src/
+│
+├── config/
+│   └── database.js
+│
+├── controllers/
+│
+├── middlewares/
+│
+├── models/
+│
+├── routes/
+│
+└── app.js
 ```
 
-## Objetivo Final
+---
 
-- [ ] API completa
-- [x] JWT funcionando
-- [x] Relacionamentos Sequelize
-- [x] Segurança implementada
-- [ ] Deploy realizado
-- [ ] Projeto pronto para portfólio
+## ✨ Funcionalidades
+
+### 👤 Usuários
+
+- Cadastro de usuários
+- Login com autenticação JWT
+- Senhas criptografadas com Bcrypt
+
+### 📦 Produtos
+
+- Cadastro de produtos
+- Listagem de produtos
+- Atualização de produtos
+- Exclusão de produtos
+- Controle de estoque
+
+### 🛒 Pedidos
+
+- Criação de pedidos
+- Associação entre usuário e produto
+- Cálculo automático do valor total
+- Atualização automática do estoque
+- Status inicial do pedido como **PENDENTE**
 
 ---
+
+## 🔐 Segurança
+
+- Autenticação com JWT
+- Criptografia de senhas utilizando Bcrypt
+- Middleware de autenticação
+- Rate Limit para proteção contra excesso de requisições
+- Tratamento de erros
+
+---
+
+## 📚 Regras de Negócio
+
+- Apenas usuários autenticados podem criar pedidos.
+- O produto deve existir para que o pedido seja realizado.
+- Não é permitido comprar produtos sem estoque suficiente.
+- O valor total do pedido é calculado automaticamente pela API.
+- Após a confirmação do pedido, o estoque do produto é atualizado.
+- Todo pedido é criado com o status **PENDENTE**.
+
+---
+
+## 🗄️ Banco de Dados
+
+### User
+
+| Campo | Tipo |
+|--------|------|
+| id | Integer |
+| nome | String |
+| email | String |
+| password | String |
+
+---
+
+### Product
+
+| Campo | Tipo |
+|--------|------|
+| id | Integer |
+| nome | String |
+| descricao | String |
+| preco | Decimal |
+| estoque | Integer |
+| userId | Integer |
+
+---
+
+### Order
+
+| Campo | Tipo |
+|--------|------|
+| id | Integer |
+| userId | Integer |
+| productId | Integer |
+| quantidade | Integer |
+| total | Decimal |
+| status | Enum |
+
+Status disponíveis:
+
+- PENDENTE
+- PAGO
+- CANCELADO
+
+---
+
+## 🔗 Relacionamentos
+
+```
+User
+│
+├── hasMany(Product)
+│
+├── hasMany(Order)
+│
+Product
+│
+└── hasMany(Order)
+
+Order
+│
+├── belongsTo(User)
+│
+└── belongsTo(Product)
+```
+
+---
+
+## 📬 Rotas da API
+
+### Usuários
+
+| Método | Endpoint |
+|---------|----------|
+| POST | /users |
+| POST | /login |
+
+---
+
+### Produtos
+
+| Método | Endpoint |
+|---------|----------|
+| POST | /products |
+| GET | /products |
+| PUT | /products/:id |
+| DELETE | /products/:id |
+
+---
+
+### Pedidos
+
+| Método | Endpoint |
+|---------|----------|
+| POST | /orders |
+| GET | /orders |
+
+---
+
+## 🧪 Testes
+
+Todas as rotas da API foram testadas manualmente utilizando o **Postman**, validando:
+
+- Cadastro de usuários
+- Login com JWT
+- Cadastro de produtos
+- Listagem de produtos
+- Atualização de produtos
+- Exclusão de produtos
+- Criação de pedidos
+- Atualização automática do estoque
+- Validação de estoque insuficiente
+- Proteção de rotas com JWT
+- Rate Limit
+
+---
+
+## 📖 Aprendizados
+
+Durante o desenvolvimento deste projeto foram aplicados os seguintes conceitos:
+
+- Arquitetura MVC
+- CRUD completo
+- Relacionamentos com Sequelize
+- Modelagem de banco de dados
+- MySQL
+- Autenticação com JWT
+- Criptografia de senhas com Bcrypt
+- Middlewares
+- Controle de estoque
+- Regras de negócio
+- Tratamento de erros
+- Organização de código
+
+---
+
+## 🚀 Melhorias Futuras
+
+- Deploy da API no Render
+- Documentação com Swagger
+- Testes automatizados com Jest
+- Docker
+- TypeScript
+- Paginação
+- Filtro de produtos
+- Painel administrativo
+
+---
+## ⚙️ Configuração
+
+Antes de iniciar o projeto, crie um arquivo chamado **.env** na raiz da aplicação utilizando o arquivo **.env.example** como modelo.
+
+
+Após configurar as variáveis de ambiente, execute:
+**npm run dev**
 
 ## 👨‍💻 Autor
 
-Jean Lucas de Souza Araújo
+**Jean Lucas de Souza Araújo**
 
-Projeto desenvolvido para prática de Backend com Node.js, Express, Sequelize, MySQL e JWT.
+Estudante de Engenharia de Software e Desenvolvedor Backend em formação, focado em Node.js, Express, Sequelize e MySQL. Buscando oportunidades de estágio para aplicar e aprimorar conhecimentos em desenvolvimento de APIs REST.
 
+### GitHub
+
+github.com/yJeanx11x
+
+### LinkedIn
+www.linkedin.com/in/jeanlucas-s/
