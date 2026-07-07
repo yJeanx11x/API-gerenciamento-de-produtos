@@ -3,11 +3,13 @@ const appRoute = express.Router()
 const authcontroll = require('../controllers/authController')
 const jwt = require('../middlewares/jwt')
 
+const ratelimet = require('../middlewares/RateLimit')
 const produtos = require('../controllers/productController');
 const pedido = require('../controllers/orderController')
 
 const admin = require('../middlewares/isAdmin')
 
+appRoute.use(ratelimet)
 appRoute.post('/register', authcontroll.registe)
 appRoute.post('/login', authcontroll.login)
 
@@ -23,7 +25,7 @@ appRoute.patch('/produto/:id', jwt.verificarToken, admin.isAdmin, produtos.atual
 // Pedidos
 appRoute.post('/pedidos', jwt.verificarToken, pedido.pedido)
 appRoute.get('/pedidos', jwt.verificarToken, pedido.listarPedidos)
-appRoute.delete('/pedidos/:id',jwt.verificarToken,pedido.cancelarPedito)
-appRoute.get('/pedidos/:id',jwt.verificarToken,pedido.buscarProdutoId)
+appRoute.delete('/pedidos/:id', jwt.verificarToken, pedido.cancelarPedito)
+appRoute.get('/pedidos/:id', jwt.verificarToken, pedido.buscarProdutoId)
 
 module.exports = appRoute
